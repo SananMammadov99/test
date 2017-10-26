@@ -45,7 +45,7 @@ public class Player : MonoBehaviour {
 
 			int randomNumber = Random.Range (0, 2);
 			if(randomNumber == 0)
-				Instantiate (obstacle[0], new Vector2 (transform.position.x, transform.position.y + 5f), transform.rotation);
+				Instantiate (obstacle[0], new Vector2 (transform.position.x, transform.position.y + 7f), transform.rotation);
 			else 
 				Instantiate (obstacle[1], new Vector2 (transform.position.x, transform.position.y + 7f), transform.rotation);
 			return;
