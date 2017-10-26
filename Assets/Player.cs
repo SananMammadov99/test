@@ -9,6 +9,8 @@ public class Player : MonoBehaviour {
 	public float jumpForce = 10f;
 	public Rigidbody2D circle;
 	public SpriteRenderer sr;
+	public GameObject[] obstacle;
+	public GameObject colorChanger;
 	public Color blue;
 	public Color yellow;
 	public Color pink;
@@ -34,11 +36,18 @@ public class Player : MonoBehaviour {
 		if (collision.tag == "colorChange") {
 			setRandomColor ();
 			Destroy (collision.gameObject);
+			Instantiate (colorChanger, new Vector2 (transform.position.x, transform.position.y + 7f), transform.rotation);
 			return;
 		}
 		if (collision.tag == "scored") {
 			score++;
 			Destroy (collision.gameObject);
+
+			int randomNumber = Random.Range (0, 2);
+			if(randomNumber == 0)
+				Instantiate (obstacle[0], new Vector2 (transform.position.x, transform.position.y + 5f), transform.rotation);
+			else 
+				Instantiate (obstacle[1], new Vector2 (transform.position.x, transform.position.y + 7f), transform.rotation);
 			return;
 		}
 		if (collision.tag != currentColor) {
